@@ -24,7 +24,7 @@ System.register(["angular2/core", "angular2/router"], function(exports_1, contex
             AppComponent = (function () {
                 function AppComponent() {
                     //PROPIEDADES
-                    this.titulo = "Restaurantes con Angular 2";
+                    this.titulo = "Restaurantes";
                 }
                 AppComponent = __decorate([
                     core_1.Component({
