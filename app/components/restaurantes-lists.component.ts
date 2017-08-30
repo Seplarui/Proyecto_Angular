@@ -11,7 +11,7 @@ import { ROUTER_DIRECTIVES, RouteConfig, Router } from "angular2/router";
 export class RestaurantesListComponent {
     //PROPIEDADES
 
-    public titulo: string = "Restaurantes";
+    public titulo: string = "Listado de Restaurantes";
 
 
 

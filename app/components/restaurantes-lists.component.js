@@ -21,7 +21,7 @@ System.register(["angular2/core"], function(exports_1, context_1) {
             RestaurantesListComponent = (function () {
                 function RestaurantesListComponent() {
                     //PROPIEDADES
-                    this.titulo = "Restaurantes";
+                    this.titulo = "Listado de Restaurantes";
                 }
                 RestaurantesListComponent = __decorate([
                     core_1.Component({
