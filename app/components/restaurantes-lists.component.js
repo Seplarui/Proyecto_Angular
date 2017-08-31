@@ -28,7 +28,25 @@ System.register(["angular2/core", "../services/restaurante.service"], function(e
                     this.titulo = "Listado de Restaurantes";
                 }
                 RestaurantesListComponent.prototype.ngOninit = function () {
+                    this.getRestaurantes();
                     console.log("restaurantes-list component cargado");
+                };
+                RestaurantesListComponent.prototype.getRestaurantes = function () {
+                    var _this = this;
+                    this._restauranteService.getRestaurantes()
+                        .subscribe(function (result) {
+                        _this.restaurantes = result.data; //Datos en json que nos llega.
+                        _this.status = result.status; //Datos en json que nos llega.
+                        if (_this.status !== "success") {
+                            alert("Error en el servidor");
+                        }
+                    }, function (error) {
+                        _this.errorMessage = error;
+                        if (_this.errorMessage !== null) {
+                            console.log(_this.errorMessage);
+                            alert("Error en la petición");
+                        }
+                    }); //Recoger el resultado.
                 };
                 RestaurantesListComponent = __decorate([
                     core_1.Component({
@@ -36,10 +54,9 @@ System.register(["angular2/core", "../services/restaurante.service"], function(e
                         templateUrl: "app/view/restaurantes-list.html",
                         providers: [restaurante_service_1.RestauranteService]
                     }), 
-                    __metadata('design:paramtypes', [(typeof (_a = typeof restaurante_service_1.RestauranteService !== 'undefined' && restaurante_service_1.RestauranteService) === 'function' && _a) || Object])
+                    __metadata('design:paramtypes', [restaurante_service_1.RestauranteService])
                 ], RestaurantesListComponent);
                 return RestaurantesListComponent;
-                var _a;
             }());
             exports_1("RestaurantesListComponent", RestaurantesListComponent);
         }
