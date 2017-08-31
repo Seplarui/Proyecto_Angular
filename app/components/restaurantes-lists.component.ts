@@ -1,4 +1,4 @@
-import { Component } from "angular2/core";
+import { Component, OnInit } from "angular2/core";
 import { ROUTER_DIRECTIVES, RouteConfig, Router } from "angular2/router";
 import { RestauranteService } from "../services/restaurante.service";
 import { Restaurante } from "../model/restaurante";
@@ -11,7 +11,7 @@ import { Restaurante } from "../model/restaurante";
 
 })
 
-export class RestaurantesListComponent {
+export class RestaurantesListComponent implements OnInit {
     //PROPIEDADES
 
     public titulo: string = "Listado de Restaurantes";
@@ -23,7 +23,7 @@ export class RestaurantesListComponent {
     constructor(private _restauranteService: RestauranteService) { }
 
 
-    ngOninit() {
+    ngOnInit() {
         this.getRestaurantes();
         console.log("restaurantes-list component cargado");
 
@@ -54,8 +54,4 @@ export class RestaurantesListComponent {
             }
             );//Recoger el resultado.
     }
-
-
-
-
 }

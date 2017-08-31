@@ -27,7 +27,7 @@ System.register(["angular2/core", "../services/restaurante.service"], function(e
                     //PROPIEDADES
                     this.titulo = "Listado de Restaurantes";
                 }
-                RestaurantesListComponent.prototype.ngOninit = function () {
+                RestaurantesListComponent.prototype.ngOnInit = function () {
                     this.getRestaurantes();
                     console.log("restaurantes-list component cargado");
                 };
