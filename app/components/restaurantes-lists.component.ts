@@ -7,6 +7,7 @@ import { Restaurante } from "../model/restaurante";
 
     selector: "restaurantes-list",
     templateUrl: "app/view/restaurantes-list.html",
+    directives: [ROUTER_DIRECTIVES],
     providers: [RestauranteService]
 
 })

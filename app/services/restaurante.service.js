@@ -30,6 +30,10 @@ System.register(["angular2/core", "angular2/http", "rxjs/add/operator/map"], fun
                     return this._http.get("http://localhost/slim/restaurantes-api.php/restaurantes")
                         .map(function (res) { return res.json(); }); //se captura el resultado y se mete en una variable.
                 };
+                RestauranteService.prototype.getRestaurante = function (id) {
+                    return this._http.get("http://localhost/slim/restaurantes-api.php/restaurante/" + id)
+                        .map(function (res) { return res.json(); }); //se captura el resultado y se mete en una variable.
+                };
                 RestauranteService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])
