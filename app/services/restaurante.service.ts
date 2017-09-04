@@ -20,10 +20,23 @@ export class RestauranteService {
             .map(res => res.json()); // se captura el resultado y se mete en una variable.
 
     }
+    
     addRestaurante(restaurante: Restaurante) {
-        let json=JSON.stringify(restaurante);
-        let params="json="+json;
-        let headers= new Headers({"Content-Type":"application/x-www-form-urlencode"});
-        return this._http.post("http://localhost/slim/restaurantes-api.php/restaurantes", params, {headers:headers}).map(res=>res.json());
+        let json = JSON.stringify(restaurante);
+        let params = "json=" + json;
+        let headers = new Headers({ 'Content-Type':'application/x-www-form-urlencoded' });
+        return this._http.post("http://localhost/slim/restaurantes-api.php/restaurantes", 
+        params,{headers: headers}).map(res => res.json());
     }
+
+
+    /* bueno */
+    /*addRestaurante(restaurante: Restaurante) {
+		let json = JSON.stringify(restaurante);
+		let params = "json="+json;
+		let headers = new Headers({'Content-Type':'application/x-www-form-urlencoded'});
+
+		return this._http.post("http://localhost/slim/restaurantes-api.php/restaurantes", 
+				params,{headers: headers}).map(res => res.json());
+	}*/
 }

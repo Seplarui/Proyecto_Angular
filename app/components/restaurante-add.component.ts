@@ -31,10 +31,13 @@ export class RestauranteAddComponent implements OnInit {
                    }
             },
             error=>{
+
+                this.errorMessage=<any>error;
                 if(this.errorMessage!==null) {
                     this.errorMessage=<any>error;
-                    console.log(this.errorMessage);
+                    console.log(this.errorMessage, this.restaurante);
                     alert("Error en la petición.");
+
                 }
                 
             }
@@ -45,6 +48,8 @@ export class RestauranteAddComponent implements OnInit {
 
     ngOnInit() {
 
+        console.log("component restauranteadd cargado");
+
         this.restaurante = new Restaurante(
             0, 
             this._routeParams.get("nombre"),
@@ -53,6 +58,10 @@ export class RestauranteAddComponent implements OnInit {
             "null",
             "bajo"
         );
+    }
+
+    callPrecio(value) {
+        this.restaurante.precio=value;
     }
 
 }
