@@ -11,7 +11,7 @@ import { Restaurante } from "../model/restaurante";
 
 export class RestauranteAddComponent implements OnInit {
 
-    public restaurante: Restaurante[];
+    public restaurante: Restaurante;
     public errorMessage: string;
     public status: string;
 
@@ -19,11 +19,33 @@ export class RestauranteAddComponent implements OnInit {
         private _restauranteService: RestauranteService,
         private _routeParams: RouteParams,
         private _router: Router
-    ) { }
+    ) {}
+    
+    onSubmit() {
+        this._restauranteService.addRestaurante(this.restaurante)
+        .subscribe(
+            response=>{
+                this.status=response.status;
+                if(this.status!=="success") {
+                    alert("Error en el servidor");
+                   }
+            },
+            error=>{
+                if(this.errorMessage!==null) {
+                    this.errorMessage=<any>error;
+                    console.log(this.errorMessage);
+                    alert("Error en la petición.");
+                }
+                
+            }
+        );
+        
+        this._router.navigate(["Home"]);
+    }
 
     ngOnInit() {
 
-        this.restaurante=new Restaurante(
+        this.restaurante = new Restaurante(
             0, 
             this._routeParams.get("nombre"),
             this._routeParams.get("direccion"),
@@ -31,7 +53,6 @@ export class RestauranteAddComponent implements OnInit {
             "null",
             "bajo"
         );
-        console.log("Component RestauranteAdd Cargado");
     }
 
 }
