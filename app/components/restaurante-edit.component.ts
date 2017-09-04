@@ -4,14 +4,14 @@ import { RestauranteService } from "../services/restaurante.service";
 import { Restaurante } from "../model/restaurante";
 
 @Component({
-    selector: "restaurante-add",
-    templateUrl: "app/view/restaurante-add.html",
+    selector: "restaurante-edit",
+    templateUrl: "app/view/restaurante-edit.html",
     providers: [RestauranteService]
 })
 
-export class RestauranteAddComponent implements OnInit {
+export class RestauranteEditComponent implements OnInit {
 
-    public titulo="Crear Nuevo Restaurante";
+    public titulo = "Editar Restaurante";
     public restaurante: Restaurante;
     public errorMessage: string;
     public status: string;
@@ -23,6 +23,7 @@ export class RestauranteAddComponent implements OnInit {
     ) { }
 
     onSubmit() {
+        /*
         this._restauranteService.addRestaurante(this.restaurante)
             .subscribe(
             response => {
@@ -45,6 +46,7 @@ export class RestauranteAddComponent implements OnInit {
             );
 
         this._router.navigate(["Home"]);
+        */
     }
 
     ngOnInit() {
@@ -52,12 +54,37 @@ export class RestauranteAddComponent implements OnInit {
         console.log("component restauranteadd cargado");
 
         this.restaurante = new Restaurante(
-            0,
+            parseInt(this._routeParams.get("id")),
             this._routeParams.get("nombre"),
             this._routeParams.get("direccion"),
             this._routeParams.get("descripcion"),
             "null",
-            "bajo"
+            this._routeParams.get("precio")
+        );
+        //peticion ajax
+        this.getRestaurante();
+    }
+
+    getRestaurante() {
+        let id = this._routeParams.get("id");
+        this._restauranteService.getRestaurante(id).subscribe(
+            response => {
+                this.restaurante = response.data;
+                this.status = response.status;
+                if (this.status !== "success") {
+                    this._router.navigate(['Home']);
+                }
+
+            },
+            error => {
+                this.errorMessage = <any>error;
+
+                if (this.errorMessage !== null) {
+                    console.log(this.errorMessage);
+                    alert("Error en la petición");
+                }
+
+            }
         );
     }
 

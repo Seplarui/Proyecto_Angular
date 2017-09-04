@@ -32,6 +32,7 @@ System.register(["angular2/core", "angular2/router", "../services/restaurante.se
                     this._restauranteService = _restauranteService;
                     this._routeParams = _routeParams;
                     this._router = _router;
+                    this.titulo = "Crear Nuevo Restaurante";
                 }
                 RestauranteAddComponent.prototype.onSubmit = function () {
                     var _this = this;
