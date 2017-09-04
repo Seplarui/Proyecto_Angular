@@ -4,19 +4,20 @@
 
     <label>Nombre Restaurante:</label>
     <p>
-        <input type="text" #nombre="ngForm" ngControl="nombre" [(ngModel)]="restaurante.nombre" />
+        <input type="text" #nombre="ngForm" ngControl="nombre" [(ngModel)]="restaurante.nombre" required />
+        <span *ngIf="!nombre.valid">El nombre es obligatorio.</span>
 
     </p>
 
     <label>Dirección</label>
     <p>
-        <input type="text" #direccion="ngForm" ngControl="direccion" [(ngModel)]="restaurante.direccion" />
-
+        <input type="text" #direccion="ngForm" ngControl="direccion" [(ngModel)]="restaurante.direccion" required />
+        <span *ngIf="!direccion.valid">La dirección es obligatoria.</span>
     </p>
     <label>Descripción:</label>
     <p>
-        <textarea type="text" #descripcion="ngForm" ngControl="descripcion" [(ngModel)]="restaurante.descripcion"></textarea>
-
+        <textarea type="text" #descripcion="ngForm" ngControl="descripcion" [(ngModel)]="restaurante.descripcion" required></textarea>
+        <span *ngIf="!descripcion.valid">La descripción es obligatoria.</span>
     </p>
 
     <label>Precio</label>
@@ -29,5 +30,5 @@
         </select>
     </p>
 
-    <input type="submit" value="Crear Restaurante" />
+    <input type="submit" value="Crear Restaurante" [disabled]="!formRestaurante.form.valid" />
 </form>
