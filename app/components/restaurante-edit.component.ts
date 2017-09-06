@@ -23,8 +23,8 @@ export class RestauranteEditComponent implements OnInit {
     ) { }
 
     onSubmit() {
-        /*
-        this._restauranteService.addRestaurante(this.restaurante)
+        let id = this._routeParams.get("id");
+        this._restauranteService.editRestaurante(id, this.restaurante)
             .subscribe(
             response => {
                 this.status = response.status;
@@ -46,7 +46,7 @@ export class RestauranteEditComponent implements OnInit {
             );
 
         this._router.navigate(["Home"]);
-        */
+
     }
 
     ngOnInit() {

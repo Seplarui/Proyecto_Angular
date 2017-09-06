@@ -29,4 +29,12 @@ export class RestauranteService {
         params,{headers: headers}).map(res => res.json());
     }
 
+    editRestaurante(id:string, restaurante: Restaurante) {
+        let json = JSON.stringify(restaurante);
+        let params = "json=" + json;
+        let headers = new Headers({ 'Content-Type':'application/x-www-form-urlencoded' });
+        return this._http.post("http://localhost/slim/restaurantes-api.php/update-restaurante/"+id, 
+        params,{headers: headers}).map(res => res.json());
+    }
+
 }

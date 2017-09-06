@@ -35,30 +35,23 @@ System.register(["angular2/core", "angular2/router", "../services/restaurante.se
                     this.titulo = "Editar Restaurante";
                 }
                 RestauranteEditComponent.prototype.onSubmit = function () {
-                    /*
-                    this._restauranteService.addRestaurante(this.restaurante)
-                        .subscribe(
-                        response => {
-                            this.status = response.status;
-                            if (this.status !== "success") {
-                                alert("Error en el servidor");
-                            }
-                        },
-                        error => {
-            
-                            this.errorMessage = <any>error;
-                            if (this.errorMessage !== null) {
-                                this.errorMessage = <any>error;
-                                console.log(this.errorMessage, this.restaurante);
-                                alert("Error en la petición.");
-            
-                            }
-            
+                    var _this = this;
+                    var id = this._routeParams.get("id");
+                    this._restauranteService.editRestaurante(id, this.restaurante)
+                        .subscribe(function (response) {
+                        _this.status = response.status;
+                        if (_this.status !== "success") {
+                            alert("Error en el servidor");
                         }
-                        );
-            
+                    }, function (error) {
+                        _this.errorMessage = error;
+                        if (_this.errorMessage !== null) {
+                            _this.errorMessage = error;
+                            console.log(_this.errorMessage, _this.restaurante);
+                            alert("Error en la petición.");
+                        }
+                    });
                     this._router.navigate(["Home"]);
-                    */
                 };
                 RestauranteEditComponent.prototype.ngOnInit = function () {
                     console.log("component restauranteadd cargado");
