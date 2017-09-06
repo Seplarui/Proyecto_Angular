@@ -63,7 +63,7 @@ System.register(["angular2/core", "angular2/router", "../services/restaurante.se
                 RestauranteEditComponent.prototype.ngOnInit = function () {
                     console.log("component restauranteadd cargado");
                     this.restaurante = new restaurante_1.Restaurante(parseInt(this._routeParams.get("id")), this._routeParams.get("nombre"), this._routeParams.get("direccion"), this._routeParams.get("descripcion"), "null", this._routeParams.get("precio"));
-                    //peticion ajax
+                    // peticion ajax
                     this.getRestaurante();
                 };
                 RestauranteEditComponent.prototype.getRestaurante = function () {
@@ -89,7 +89,7 @@ System.register(["angular2/core", "angular2/router", "../services/restaurante.se
                 RestauranteEditComponent = __decorate([
                     core_1.Component({
                         selector: "restaurante-edit",
-                        templateUrl: "app/view/restaurante-edit.html",
+                        templateUrl: "app/view/restaurante-add.html",
                         providers: [restaurante_service_1.RestauranteService]
                     }), 
                     __metadata('design:paramtypes', [restaurante_service_1.RestauranteService, router_1.RouteParams, router_1.Router])

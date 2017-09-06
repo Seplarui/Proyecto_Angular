@@ -5,7 +5,7 @@ import { Restaurante } from "../model/restaurante";
 
 @Component({
     selector: "restaurante-edit",
-    templateUrl: "app/view/restaurante-edit.html",
+    templateUrl: "app/view/restaurante-add.html",
     providers: [RestauranteService]
 })
 
@@ -61,7 +61,7 @@ export class RestauranteEditComponent implements OnInit {
             "null",
             this._routeParams.get("precio")
         );
-        //peticion ajax
+        // peticion ajax
         this.getRestaurante();
     }
 
