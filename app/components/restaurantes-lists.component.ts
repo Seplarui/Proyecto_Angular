@@ -19,7 +19,7 @@ export class RestaurantesListComponent implements OnInit {
     public restaurantes: Restaurante[];
     public status: string;
     public errorMessage;
-
+    public confirmado;
 
     constructor(private _restauranteService: RestauranteService) { }
 
@@ -54,5 +54,42 @@ export class RestaurantesListComponent implements OnInit {
 
             }
             );//Recoger el resultado.
+    }
+
+    onBorrarConfirm(id) {
+
+        this.confirmado = id;
+
+    }
+    onCancelarConfirm(id) {
+        this.confirmado = null;
+
+    }
+    onBorrarRestaurante(id: string) {
+
+        this._restauranteService.deleteRestaurante(id)
+            .subscribe(
+            result => {
+
+                this.status = result.status; //Datos en json que nos llega.
+
+                if (this.status !== "success") {
+                    alert("Error en el servidor");
+                }
+                this.getRestaurantes();
+            },
+            error => {
+                this.errorMessage = <any>error;
+
+                if (this.errorMessage !== null) {
+
+                    console.log(this.errorMessage);
+                    alert("Error en la petición");
+
+                }
+
+            }
+            );//Recoger el resultado.
+
     }
 }

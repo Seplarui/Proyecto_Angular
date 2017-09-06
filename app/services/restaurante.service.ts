@@ -37,4 +37,9 @@ export class RestauranteService {
         params,{headers: headers}).map(res => res.json());
     }
 
+    deleteRestaurante(id:string ) {
+        return this._http.get("http://localhost/slim/restaurantes-api.php/delete-restaurante/" + id)
+        .map(res => res.json()); // se captura el resultado y se mete en una variable.
+    }
+
 }
